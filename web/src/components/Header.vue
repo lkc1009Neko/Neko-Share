@@ -3,7 +3,7 @@ import { ref, computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useAuthStore } from '../store/auth'
 import { NLayoutHeader, NSpace, NButton, NAvatar, NBadge, NDropdown, useMessage } from 'naive-ui'
-import { PersonOutline, NotificationsOutline, CreateOutline, HomeOutline, AppsOutline, ShareSocialOutline, BookOutline, ExtensionPuzzleOutline } from '@vicons/ionicons5'
+import { PersonOutline, NotificationsOutline, CreateOutline, HomeOutline, AppsOutline, ShareSocialOutline, BookOutline, ExtensionPuzzleOutline, GameControllerOutline, MusicalNotesOutline } from '@vicons/ionicons5'
 
 const showMobileMenu = ref(false)
 
@@ -102,6 +102,14 @@ function goToPlugins() {
   router.push('/plugins')
 }
 
+function goToGames() {
+  router.push('/games')
+}
+
+function goToVoices() {
+  router.push('/voices')
+}
+
 // 判断当前路由是否激活
 const isActiveRoute = (path: string) => {
   return route.path === path
@@ -173,6 +181,28 @@ const isActiveRoute = (path: string) => {
               <n-icon :component="ExtensionPuzzleOutline" />
             </template>
             插件
+          </n-button>
+          <n-button 
+            text 
+            @click="goToGames" 
+            class="nav-button"
+            :type="isActiveRoute('/games') ? 'primary' : 'default'"
+          >
+            <template #icon>
+              <n-icon :component="GameControllerOutline" />
+            </template>
+            游戏
+          </n-button>
+          <n-button 
+            text 
+            @click="goToVoices" 
+            class="nav-button"
+            :type="isActiveRoute('/voices') ? 'primary' : 'default'"
+          >
+            <template #icon>
+              <n-icon :component="MusicalNotesOutline" />
+            </template>
+            音声
           </n-button>
         </div>
       </div>
@@ -307,6 +337,30 @@ const isActiveRoute = (path: string) => {
               <n-icon :component="ExtensionPuzzleOutline" />
             </template>
             插件
+          </n-button>
+          <n-button 
+            text 
+            @click="goToGames" 
+            class="mobile-nav-button"
+            :type="isActiveRoute('/games') ? 'primary' : 'default'"
+            block
+          >
+            <template #icon>
+              <n-icon :component="GameControllerOutline" />
+            </template>
+            游戏
+          </n-button>
+          <n-button 
+            text 
+            @click="goToVoices" 
+            class="mobile-nav-button"
+            :type="isActiveRoute('/voices') ? 'primary' : 'default'"
+            block
+          >
+            <template #icon>
+              <n-icon :component="MusicalNotesOutline" />
+            </template>
+            音声
           </n-button>
         </div>
 
