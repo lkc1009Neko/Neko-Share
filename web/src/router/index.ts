@@ -66,6 +66,11 @@ const routes: RouteRecordRaw[] = [
     path: '/bookshelf',
     name: 'BookshelfDetail',
     component: () => import('../view/BookshelfDetail.vue')
+  },
+  {
+    path: '/plugins',
+    name: 'Plugins',
+    component: () => import('../view/Plugins.vue')
   }
 ]
 

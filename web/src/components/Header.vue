@@ -3,7 +3,7 @@ import { ref, computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useAuthStore } from '../store/auth'
 import { NLayoutHeader, NSpace, NButton, NAvatar, NBadge, NDropdown, useMessage } from 'naive-ui'
-import { PersonOutline, NotificationsOutline, CreateOutline, HomeOutline, AppsOutline, ShareSocialOutline, BookOutline } from '@vicons/ionicons5'
+import { PersonOutline, NotificationsOutline, CreateOutline, HomeOutline, AppsOutline, ShareSocialOutline, BookOutline, ExtensionPuzzleOutline } from '@vicons/ionicons5'
 
 const showMobileMenu = ref(false)
 
@@ -98,6 +98,10 @@ function goToBooks() {
   router.push('/books')
 }
 
+function goToPlugins() {
+  router.push('/plugins')
+}
+
 // 判断当前路由是否激活
 const isActiveRoute = (path: string) => {
   return route.path === path
@@ -158,6 +162,17 @@ const isActiveRoute = (path: string) => {
               <n-icon :component="BookOutline" />
             </template>
             书籍
+          </n-button>
+          <n-button 
+            text 
+            @click="goToPlugins" 
+            class="nav-button"
+            :type="isActiveRoute('/plugins') ? 'primary' : 'default'"
+          >
+            <template #icon>
+              <n-icon :component="ExtensionPuzzleOutline" />
+            </template>
+            插件
           </n-button>
         </div>
       </div>
@@ -280,6 +295,18 @@ const isActiveRoute = (path: string) => {
               <n-icon :component="BookOutline" />
             </template>
             书籍
+          </n-button>
+          <n-button 
+            text 
+            @click="goToPlugins" 
+            class="mobile-nav-button"
+            :type="isActiveRoute('/plugins') ? 'primary' : 'default'"
+            block
+          >
+            <template #icon>
+              <n-icon :component="ExtensionPuzzleOutline" />
+            </template>
+            插件
           </n-button>
         </div>
 
