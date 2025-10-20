@@ -3,7 +3,7 @@ import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '../store/auth'
 import { NLayout, NLayoutContent, NCard, NButton, NAvatar, NInput, NIcon, NTag, NDivider, NStatistic, useMessage } from 'naive-ui'
-import { SearchOutline, PersonOutline, BookOutline, HeartOutline, EyeOutline } from '@vicons/ionicons5'
+import { SearchOutline, PersonOutline, BookOutline, HeartOutline, EyeOutline, EllipsisHorizontalOutline, ChevronForwardOutline } from '@vicons/ionicons5'
 import Header from '../components/Header.vue'
 import type { BookCollection, BookType, BookStyle, BookStatusType, UserBookshelf, ReadingRecord } from '../types/book'
 import { BookTypes, BookStyles, BookStatus } from '../types/book'
@@ -237,6 +237,15 @@ function goToBookDetail(collectionId: string, bookId?: string) {
   }
 }
 
+// 跳转到书架详情页面
+function goToBookshelfDetail(tab?: string) {
+  if (tab) {
+    router.push(`/bookshelf?tab=${tab}`)
+  } else {
+    router.push('/bookshelf')
+  }
+}
+
 // 添加到书架
 function addToBookshelf(collection: BookCollection) {
   if (!authStore.isAuthenticated) {
@@ -285,10 +294,89 @@ onMounted(() => {
           lastReadAt: '2024-10-20',
           isFavorite: true,
           tags: ['魔法', '学院', '冒险']
+        },
+        {
+          id: '2',
+          bookId: '2-1',
+          bookTitle: '奇幻冒险记 第一卷',
+          bookCover: '/images/books/fantasy-adventure-vol1.jpg',
+          author: '冒险作家',
+          addedAt: '2024-10-10',
+          lastReadAt: '2024-10-18',
+          isFavorite: false,
+          tags: ['异世界', '冒险', '战斗']
+        },
+        {
+          id: '3',
+          bookId: '3-1',
+          bookTitle: '校园恋爱物语 第一卷',
+          bookCover: '/images/books/school-romance-vol1.jpg',
+          author: '恋爱作家',
+          addedAt: '2024-10-05',
+          lastReadAt: '2024-10-15',
+          isFavorite: true,
+          tags: ['校园', '恋爱', '青春']
+        },
+        {
+          id: '4',
+          bookId: '4-1',
+          bookTitle: '科幻未来世界',
+          bookCover: '/images/books/sci-fi.jpg',
+          author: '科幻作家',
+          addedAt: '2024-09-28',
+          lastReadAt: '2024-10-12',
+          isFavorite: false,
+          tags: ['科幻', '未来', '科技']
         }
       ],
-      completed: [],
-      favorites: [],
+      completed: [
+        {
+          id: '5',
+          bookId: '5-1',
+          bookTitle: '历史传记',
+          bookCover: '/images/books/history.jpg',
+          author: '历史作家',
+          addedAt: '2024-08-15',
+          lastReadAt: '2024-09-30',
+          isFavorite: true,
+          tags: ['历史', '传记', '文化']
+        },
+        {
+          id: '6',
+          bookId: '6-1',
+          bookTitle: '哲学思考',
+          bookCover: '/images/books/philosophy.jpg',
+          author: '哲学作家',
+          addedAt: '2024-08-10',
+          lastReadAt: '2024-09-25',
+          isFavorite: false,
+          tags: ['哲学', '思考', '人生']
+        }
+      ],
+      favorites: [
+        {
+          id: '1',
+          bookId: '1-1',
+          bookTitle: '魔法学院物语 第一卷',
+          bookCover: '/images/books/magic-academy-vol1.jpg',
+          author: '魔法作家',
+          addedAt: '2024-10-15',
+          lastReadAt: '2024-10-20',
+          isFavorite: true,
+          tags: ['魔法', '学院', '冒险']
+        },
+        {
+          id: '3',
+          bookId: '3-1',
+          bookTitle: '校园恋爱物语 第一卷',
+          bookCover: '/images/books/school-romance-vol1.jpg',
+          author: '恋爱作家',
+          addedAt: '2024-10-05',
+          lastReadAt: '2024-10-15',
+          isFavorite: true,
+          tags: ['校园', '恋爱', '青春']
+        }
+      ],
       wantToRead: []
     }
     
@@ -302,6 +390,56 @@ onMounted(() => {
         progress: 42,
         lastReadAt: '2024-10-20',
         readTime: 120
+      },
+      {
+        id: '2',
+        bookId: '2-1',
+        bookTitle: '奇幻冒险记 第一卷',
+        currentChapter: 3,
+        totalChapters: 10,
+        progress: 30,
+        lastReadAt: '2024-10-18',
+        readTime: 90
+      },
+      {
+        id: '3',
+        bookId: '3-1',
+        bookTitle: '校园恋爱物语 第一卷',
+        currentChapter: 8,
+        totalChapters: 8,
+        progress: 100,
+        lastReadAt: '2024-10-15',
+        readTime: 180
+      },
+      {
+        id: '4',
+        bookId: '4-1',
+        bookTitle: '科幻未来世界',
+        currentChapter: 2,
+        totalChapters: 15,
+        progress: 13,
+        lastReadAt: '2024-10-12',
+        readTime: 60
+      },
+      {
+        id: '5',
+        bookId: '5-1',
+        bookTitle: '悬疑推理小说',
+        currentChapter: 6,
+        totalChapters: 12,
+        progress: 50,
+        lastReadAt: '2024-10-08',
+        readTime: 150
+      },
+      {
+        id: '6',
+        bookId: '6-1',
+        bookTitle: '历史传记',
+        currentChapter: 10,
+        totalChapters: 10,
+        progress: 100,
+        lastReadAt: '2024-09-30',
+        readTime: 200
       }
     ]
   }
@@ -351,13 +489,26 @@ onMounted(() => {
           </n-card>
 
           <!-- 我的书架 -->
-          <n-card class="bookshelf-card" title="我的书架" :bordered="false">
+          <n-card class="bookshelf-card" :bordered="false">
+            <template #header>
+              <div class="bookshelf-header" @click="goToBookshelfDetail()">
+                <span class="bookshelf-title">我的书架</span>
+                <n-icon :component="ChevronForwardOutline" size="18" class="header-arrow" />
+              </div>
+            </template>
             <div class="bookshelf-sections">
+              <!-- 正在阅读 -->
               <div class="bookshelf-section">
-                <h4>正在阅读</h4>
+                <div class="section-header">
+                  <h4>正在阅读</h4>
+                  <span class="section-count">{{ userBookshelf.reading.length }}本</span>
+                </div>
                 <div class="bookshelf-list">
+                  <div v-if="userBookshelf.reading.length === 0" class="empty-state">
+                    <span class="empty-text">当前没有</span>
+                  </div>
                   <div 
-                    v-for="item in userBookshelf.reading" 
+                    v-for="item in userBookshelf.reading.slice(0, 3)" 
                     :key="item.id"
                     class="bookshelf-item"
                     @click="goToBookDetail(item.bookId)"
@@ -368,22 +519,79 @@ onMounted(() => {
                       <div class="item-author">{{ item.author }}</div>
                     </div>
                   </div>
+                  <div 
+                    v-if="userBookshelf.reading.length > 3" 
+                    class="bookshelf-more"
+                    @click="goToBookshelfDetail('reading')"
+                  >
+                    <n-icon :component="EllipsisHorizontalOutline" size="20" />
+                    <span>查看更多 ({{ userBookshelf.reading.length - 3 }})</span>
+                  </div>
                 </div>
               </div>
               
+              <!-- 已完成 -->
               <div class="bookshelf-section">
-                <h4>阅读记录</h4>
-                <div class="reading-records">
+                <div class="section-header">
+                  <h4>已完成</h4>
+                  <span class="section-count">{{ userBookshelf.completed.length }}本</span>
+                </div>
+                <div class="bookshelf-list">
+                  <div v-if="userBookshelf.completed.length === 0" class="empty-state">
+                    <span class="empty-text">当前没有</span>
+                  </div>
                   <div 
-                    v-for="record in readingRecords" 
+                    v-for="item in userBookshelf.completed.slice(0, 3)" 
+                    :key="item.id"
+                    class="bookshelf-item"
+                    @click="goToBookDetail(item.bookId)"
+                  >
+                    <n-avatar round size="small" :src="item.bookCover" />
+                    <div class="item-info">
+                      <div class="item-title">{{ item.bookTitle }}</div>
+                      <div class="item-author">{{ item.author }}</div>
+                    </div>
+                  </div>
+                  <div 
+                    v-if="userBookshelf.completed.length > 3" 
+                    class="bookshelf-more"
+                    @click="goToBookshelfDetail('completed')"
+                  >
+                    <n-icon :component="EllipsisHorizontalOutline" size="20" />
+                    <span>查看更多 ({{ userBookshelf.completed.length - 3 }})</span>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- 阅读记录 -->
+              <div class="bookshelf-section">
+                <div class="section-header">
+                  <h4>阅读记录</h4>
+                  <span class="section-count">{{ readingRecords.length }}条</span>
+                </div>
+                <div class="reading-records">
+                  <div v-if="readingRecords.length === 0" class="empty-state">
+                    <span class="empty-text">当前没有</span>
+                  </div>
+                  <div 
+                    v-for="record in readingRecords.slice(0, 3)" 
                     :key="record.id"
                     class="reading-record"
+                    @click="goToBookDetail(record.bookId)"
                   >
                     <div class="record-title">{{ record.bookTitle }}</div>
                     <div class="record-progress">
                       <span>进度: {{ record.currentChapter }}/{{ record.totalChapters }}</span>
                       <span class="record-time">{{ record.lastReadAt }}</span>
                     </div>
+                  </div>
+                  <div 
+                    v-if="readingRecords.length > 3" 
+                    class="bookshelf-more"
+                    @click="goToBookshelfDetail('records')"
+                  >
+                    <n-icon :component="EllipsisHorizontalOutline" size="20" />
+                    <span>查看更多 ({{ readingRecords.length - 3 }})</span>
                   </div>
                 </div>
               </div>
@@ -657,11 +865,81 @@ onMounted(() => {
   gap: 16px;
 }
 
-.bookshelf-section h4 {
-  margin: 0 0 8px 0;
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.section-header h4 {
+  margin: 0;
   font-size: 1rem;
   font-weight: 600;
   color: #1a1a1a;
+}
+
+.section-count {
+  font-size: 0.8rem;
+  color: #999;
+}
+
+.bookshelf-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 8px 0;
+  transition: color 0.2s ease;
+}
+
+.bookshelf-header:hover {
+  color: #1890ff;
+}
+
+.bookshelf-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.header-arrow {
+  color: #999;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.bookshelf-header:hover .header-arrow {
+  color: #1890ff;
+  transform: translateX(2px);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 16px;
+  color: #999;
+}
+
+.empty-text {
+  font-size: 0.9rem;
+}
+
+.bookshelf-more {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  color: #1890ff;
+  font-size: 0.9rem;
+  justify-content: center;
+  border: 1px dashed #d9d9d9;
+  margin-top: 8px;
+}
+
+.bookshelf-more:hover {
+  background-color: #f0f8ff;
+  border-color: #1890ff;
 }
 
 .bookshelf-list, .reading-records {

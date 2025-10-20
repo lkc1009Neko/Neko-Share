@@ -61,6 +61,11 @@ const routes: RouteRecordRaw[] = [
     path: '/books/:collectionId/book/:bookId',
     name: 'BookDetail',
     component: () => import('../view/BookDetail.vue')
+  },
+  {
+    path: '/bookshelf',
+    name: 'BookshelfDetail',
+    component: () => import('../view/BookshelfDetail.vue')
   }
 ]
 
