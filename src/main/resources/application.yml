@@ -33,3 +33,14 @@ sa-token:
   token-prefix: Bearer
   jwt-secret-key: NekoShare
   is-log: true
+# Waifu2x 图片超分配置
+waifu2x:
+  # waifu2x-ncnn-vulkan 可执行文件路径
+  # Windows: C:/path/to/waifu2x-ncnn-vulkan.exe
+  # Linux/Mac: /usr/local/bin/waifu2x-ncnn-vulkan
+  # 如果已加入系统 PATH，直接使用程序名即可
+  executable:
+    path: waifu2x-ncnn-vulkan
+  # 模型文件目录路径（相对于可执行文件或绝对路径）
+  model:
+    path: models
