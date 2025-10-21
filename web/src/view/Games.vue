@@ -524,7 +524,6 @@ onMounted(() => {
 .games-content {
   padding: 20px;
   min-height: calc(100vh - 64px);
-  background-color: #f8f9fa;
 }
 
 .games-container {
@@ -644,7 +643,6 @@ onMounted(() => {
 .game-card {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   border-radius: 8px;
-  background: white;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 

@@ -114,7 +114,7 @@ function submitComment() {
   <n-layout>
     <Header />
     
-    <n-layout-header style="padding: 16px 20px; background: white; border-bottom: 1px solid #e8e8e8;">
+    <n-layout-header style="padding: 16px 20px; border-bottom: 1px solid #e8e8e8;">
       <n-space justify="space-between" align="center">
         <n-button text @click="$router.back()">
           <n-icon :component="ArrowBackOutline" />

@@ -446,7 +446,6 @@ const isActiveRoute = (path: string) => {
 <style scoped>
 .header {
   padding: 0 20px;
-  background: white;
   border-bottom: 1px solid #e8e8e8;
   height: 64px;
   position: sticky;
@@ -526,7 +525,6 @@ const isActiveRoute = (path: string) => {
   top: 100%;
   left: 0;
   right: 0;
-  background: white;
   border-bottom: 1px solid #e8e8e8;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }

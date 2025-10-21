@@ -481,7 +481,6 @@ onMounted(() => {
 .bookshelf-detail-content {
   padding: 20px;
   min-height: calc(100vh - 64px);
-  background-color: #f8f9fa;
 }
 
 .bookshelf-detail-container {
@@ -494,7 +493,6 @@ onMounted(() => {
 }
 
 .main-content {
-  background: white;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
@@ -562,7 +560,6 @@ onMounted(() => {
 }
 
 .tag {
-  background: #f0f0f0;
   padding: 2px 6px;
   border-radius: 4px;
   font-size: 0.8rem;
@@ -626,7 +623,6 @@ onMounted(() => {
 .progress-bar {
   width: 200px;
   height: 6px;
-  background: #f0f0f0;
   border-radius: 3px;
   overflow: hidden;
 }

@@ -73,9 +73,9 @@ function handleSaveDraft() {
   <n-layout>
     <Header />
     
-    <n-layout-header style="padding: 16px 20px; background: white; border-bottom: 1px solid #e8e8e8;">
+    <n-layout-header style="padding: 16px 20px; border-bottom: 1px solid #e8e8e8;">
       <n-space justify="space-between" align="center">
-        <h2 style="margin: 0; color: #18a058;">写文章</h2>
+        <h2 style="margin: 0;">写文章</h2>
         <n-space>
           <n-button @click="handleSaveDraft">保存草稿</n-button>
           <n-button type="primary" :loading="loading" @click="handlePublish">发布文章</n-button>

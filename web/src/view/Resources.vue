@@ -485,7 +485,7 @@ function goToProfile() {
           <!-- 无结果提示 -->
           <div v-if="filteredResources.length === 0" class="no-results">
             <n-card>
-              <div style="text-align: center; padding: 40px; color: #999;">
+              <div style="text-align: center; padding: 40px;">
                 <h3>没有找到相关资源</h3>
                 <p>尝试调整搜索关键词或选择其他分类</p>
                 <n-button @click="clearFilters" type="primary">
@@ -513,7 +513,6 @@ function goToProfile() {
 .resources-content {
   padding: 20px;
   min-height: calc(100vh - 64px);
-  background-color: #f8f9fa;
 }
 
 .resources-container {
@@ -532,7 +531,6 @@ function goToProfile() {
 }
 
 .user-card, .categories-card {
-  background: white;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   margin-bottom: 16px;
@@ -553,12 +551,10 @@ function goToProfile() {
   margin: 0 0 4px 0;
   font-size: 1.3rem;
   font-weight: 600;
-  color: #1a1a1a;
 }
 
 .user-bio {
   margin: 0;
-  color: #666;
   font-size: 0.9rem;
   line-height: 1.4;
 }
@@ -612,13 +608,11 @@ function goToProfile() {
 }
 
 .category-count {
-  color: #999;
   font-size: 0.9rem;
 }
 
 /* 右侧资源区域 */
 .main-content {
-  background: white;
   border-radius: 12px;
   padding: 24px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -635,7 +629,6 @@ function goToProfile() {
   margin: 0;
   font-size: 1.5rem;
   font-weight: 600;
-  color: #1a1a1a;
 }
 
 .search-controls {
@@ -657,7 +650,6 @@ function goToProfile() {
   margin: 0 0 16px 0;
   font-size: 1.2rem;
   font-weight: 600;
-  color: #1a1a1a;
 }
 
 .types-container {
@@ -687,10 +679,8 @@ function goToProfile() {
   align-items: center;
   margin-bottom: 16px;
   padding: 12px;
-  background: #f8f9fa;
   border-radius: 6px;
   font-size: 0.9rem;
-  color: #666;
 }
 
 .results-count {
@@ -699,21 +689,18 @@ function goToProfile() {
 }
 
 .selected-category {
-  background: #e6f7ff;
   padding: 4px 8px;
   border-radius: 4px;
   color: #1890ff;
 }
 
 .selected-type {
-  background: #f6ffed;
   padding: 4px 8px;
   border-radius: 4px;
   color: #52c41a;
 }
 
 .search-query {
-  background: #fff7e6;
   padding: 4px 8px;
   border-radius: 4px;
   color: #fa8c16;

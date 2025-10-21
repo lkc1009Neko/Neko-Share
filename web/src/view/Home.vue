@@ -198,7 +198,7 @@ function goToResources() {
       <div class="home-container">
         <!-- 左侧个人信息卡片 -->
         <div class="sidebar">
-          <n-card class="user-card" :bordered="false">
+          <n-card class="user-card" title="个人信息" :bordered="false">
             <div class="user-header">
               <n-avatar round size="large" :src="currentUser.avatar">
                 <template #fallback>
@@ -300,7 +300,7 @@ function goToResources() {
               </div>
             </n-tab-pane>
             <n-tab-pane name="popular" tab="热门文章">
-              <div style="text-align: center; padding: 40px; color: #999;">
+              <div style="text-align: center; padding: 40px;">
                 热门文章功能开发中...
               </div>
             </n-tab-pane>
@@ -415,7 +415,6 @@ function goToResources() {
 .home-content {
   padding: 20px;
   min-height: calc(100vh - 64px);
-  background-color: #f8f9fa;
 }
 
 .home-container {
@@ -434,7 +433,6 @@ function goToResources() {
 }
 
 .user-card {
-  background: white;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
@@ -454,12 +452,10 @@ function goToResources() {
   margin: 0 0 4px 0;
   font-size: 1.3rem;
   font-weight: 600;
-  color: #1a1a1a;
 }
 
 .user-bio {
   margin: 0;
-  color: #666;
   font-size: 0.9rem;
   line-height: 1.4;
 }
@@ -492,7 +488,6 @@ function goToResources() {
 
 /* 右侧文章区域 */
 .main-content {
-  background: white;
   border-radius: 12px;
   padding: 24px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -509,7 +504,6 @@ function goToResources() {
   margin: 0;
   font-size: 1.5rem;
   font-weight: 600;
-  color: #1a1a1a;
 }
 
 .search-input {
@@ -604,7 +598,6 @@ function goToResources() {
 }
 
 .article-date {
-  color: #999;
   font-size: 0.9rem;
 }
 
@@ -618,7 +611,6 @@ function goToResources() {
   display: flex;
   align-items: center;
   gap: 4px;
-  color: #999;
   font-size: 0.9rem;
 }
 
@@ -760,7 +752,6 @@ function goToResources() {
   margin: 0;
   font-size: 1.3rem;
   font-weight: 600;
-  color: #1a1a1a;
 }
 
 .view-all-button {
@@ -817,7 +808,6 @@ function goToResources() {
 }
 
 .resource-description {
-  color: #666;
   margin-bottom: 12px;
   line-height: 1.4;
   font-size: 0.9rem;
@@ -840,7 +830,6 @@ function goToResources() {
 }
 
 .more-tags {
-  color: #999;
   font-size: 0.8rem;
 }
 
@@ -848,7 +837,6 @@ function goToResources() {
   display: flex;
   gap: 8px;
   font-size: 0.8rem;
-  color: #999;
 }
 
 .resource-footer {
@@ -865,7 +853,6 @@ function goToResources() {
 }
 
 .resource-author .author-name {
-  color: #666;
   font-size: 0.8rem;
   font-weight: 400;
 }
@@ -879,7 +866,6 @@ function goToResources() {
   display: flex;
   align-items: center;
   gap: 2px;
-  color: #999;
   font-size: 0.8rem;
 }
 

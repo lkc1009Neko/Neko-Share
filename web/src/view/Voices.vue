@@ -549,7 +549,6 @@ onMounted(() => {
 .voices-content {
   padding: 20px;
   min-height: calc(100vh - 64px);
-  background-color: #f8f9fa;
 }
 
 .voices-container {
@@ -585,7 +584,6 @@ onMounted(() => {
   margin: 0;
   font-size: 1.2rem;
   font-weight: 600;
-  color: #1a1a1a;
 }
 
 .user-stats {
@@ -594,7 +592,6 @@ onMounted(() => {
   gap: 4px;
   margin-top: 8px;
   font-size: 0.9rem;
-  color: #666;
 }
 
 .collection-section {
@@ -612,7 +609,6 @@ onMounted(() => {
   margin: 0;
   font-size: 1rem;
   font-weight: 600;
-  color: #333;
 }
 
 .voice-previews {
@@ -626,7 +622,6 @@ onMounted(() => {
   justify-content: space-between;
   align-items: center;
   padding: 8px;
-  background: #f5f5f5;
   border-radius: 6px;
   font-size: 0.85rem;
 }
@@ -647,7 +642,6 @@ onMounted(() => {
   margin: 0 0 12px 0;
   font-size: 1rem;
   font-weight: 600;
-  color: #333;
 }
 
 .filter-options {
@@ -686,7 +680,6 @@ onMounted(() => {
 .voice-card {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   border-radius: 8px;
-  background: white;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -744,20 +737,17 @@ onMounted(() => {
   margin: 0;
   font-size: 1.1rem;
   font-weight: 600;
-  color: #1a1a1a;
   line-height: 1.3;
 }
 
 .voice-author {
   font-size: 0.9rem;
-  color: #666;
 }
 
 .voice-description {
   margin: 0;
   font-size: 0.9rem;
   line-height: 1.4;
-  color: #555;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -776,7 +766,6 @@ onMounted(() => {
   align-items: center;
   gap: 4px;
   font-size: 0.85rem;
-  color: #666;
 }
 
 .voice-tags {
@@ -788,7 +777,6 @@ onMounted(() => {
 
 .voice-duration {
   font-size: 0.85rem;
-  color: #999;
 }
 
 .voice-actions {

@@ -583,7 +583,6 @@ onMounted(() => {
 .plugins-content {
   padding: 20px;
   min-height: calc(100vh - 64px);
-  background-color: #f8f9fa;
 }
 
 .plugins-container {

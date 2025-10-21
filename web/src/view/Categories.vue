@@ -340,7 +340,7 @@ function clearFilters() {
           <!-- 无结果提示 -->
           <div v-if="filteredArticles.length === 0" class="no-results">
             <n-card>
-              <div style="text-align: center; padding: 40px; color: #999;">
+              <div style="text-align: center; padding: 40px;">
                 <h3>没有找到相关文章</h3>
                 <p>尝试调整搜索关键词或选择其他标签</p>
                 <n-button @click="clearFilters" type="primary">
@@ -359,7 +359,6 @@ function clearFilters() {
 .categories-content {
   padding: 20px;
   min-height: calc(100vh - 64px);
-  background-color: #f8f9fa;
 }
 
 .categories-container {
@@ -378,7 +377,6 @@ function clearFilters() {
 }
 
 .user-card {
-  background: white;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
@@ -398,12 +396,10 @@ function clearFilters() {
   margin: 0 0 4px 0;
   font-size: 1.3rem;
   font-weight: 600;
-  color: #1a1a1a;
 }
 
 .user-bio {
   margin: 0;
-  color: #666;
   font-size: 0.9rem;
   line-height: 1.4;
 }
@@ -436,7 +432,6 @@ function clearFilters() {
 
 /* 右侧分类区域 */
 .main-content {
-  background: white;
   border-radius: 12px;
   padding: 24px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -453,7 +448,6 @@ function clearFilters() {
   margin: 0;
   font-size: 1.5rem;
   font-weight: 600;
-  color: #1a1a1a;
 }
 
 .search-controls {
@@ -475,7 +469,6 @@ function clearFilters() {
   margin: 0 0 16px 0;
   font-size: 1.2rem;
   font-weight: 600;
-  color: #1a1a1a;
 }
 
 .tags-container {
@@ -500,10 +493,8 @@ function clearFilters() {
   align-items: center;
   margin-bottom: 16px;
   padding: 12px;
-  background: #f8f9fa;
   border-radius: 6px;
   font-size: 0.9rem;
-  color: #666;
 }
 
 .results-count {
@@ -512,14 +503,12 @@ function clearFilters() {
 }
 
 .selected-tag {
-  background: #e6f7ff;
   padding: 4px 8px;
   border-radius: 4px;
   color: #1890ff;
 }
 
 .search-query {
-  background: #fff7e6;
   padding: 4px 8px;
   border-radius: 4px;
   color: #fa8c16;

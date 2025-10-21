@@ -566,7 +566,6 @@ onMounted(() => {
 .book-detail-content {
   padding: 20px;
   min-height: calc(100vh - 64px);
-  background-color: #f8f9fa;
 }
 
 .book-detail-container {
@@ -597,7 +596,6 @@ onMounted(() => {
 }
 
 .book-info-card, .author-info-card {
-  background: white;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
@@ -705,7 +703,6 @@ onMounted(() => {
 }
 
 .description-card, .collection-info-card {
-  background: white;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }

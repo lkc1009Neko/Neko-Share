@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useAuthStore } from './store/auth'
 import { onMounted } from 'vue'
-import { NNotificationProvider, NMessageProvider, NConfigProvider } from 'naive-ui'
+import { NNotificationProvider, NMessageProvider, NConfigProvider, darkTheme } from 'naive-ui'
 import Live2DWidget from './components/Live2DWidget.vue'
 
 const authStore = useAuthStore()
@@ -16,7 +16,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <n-config-provider>
+  <n-config-provider :theme="darkTheme">
     <n-notification-provider>
       <n-message-provider>
         <router-view />

@@ -91,7 +91,7 @@ function handleEditProfile() {
   <n-layout>
     <Header />
     
-    <n-layout-header style="padding: 20px; background: white; border-bottom: 1px solid #e8e8e8;">
+    <n-layout-header style="padding: 20px; border-bottom: 1px solid #e8e8e8;">
       <n-space justify="space-between" align="center">
         <h1 style="margin: 0; color: #18a058;">个人主页</h1>
       </n-space>

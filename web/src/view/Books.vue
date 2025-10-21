@@ -787,7 +787,6 @@ onMounted(() => {
 .books-content {
   padding: 20px;
   min-height: calc(100vh - 64px);
-  background-color: #f8f9fa;
 }
 
 .books-container {
@@ -806,7 +805,6 @@ onMounted(() => {
 }
 
 .user-card, .bookshelf-card {
-  background: white;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   margin-bottom: 16px;
@@ -991,7 +989,6 @@ onMounted(() => {
 
 /* 右侧主内容区域 */
 .main-content {
-  background: white;
   border-radius: 12px;
   padding: 24px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -1035,7 +1032,6 @@ onMounted(() => {
   gap: 12px;
   margin-top: 16px;
   padding: 16px;
-  background: #f8f9fa;
   border-radius: 8px;
 }
 
@@ -1069,7 +1065,6 @@ onMounted(() => {
   align-items: center;
   margin-bottom: 16px;
   padding: 12px;
-  background: #f8f9fa;
   border-radius: 6px;
   font-size: 0.9rem;
   color: #666;
@@ -1081,7 +1076,6 @@ onMounted(() => {
 }
 
 .selected-filter {
-  background: #e6f7ff;
   padding: 4px 8px;
   border-radius: 4px;
   color: #1890ff;
