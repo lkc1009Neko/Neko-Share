@@ -11,11 +11,14 @@ import cn.dev33.satoken.stp.StpUtil;
 import cn.hutool.jwt.JWT;
 import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import java.util.Objects;
 
 @Slf4j
 @Configuration
@@ -25,27 +28,20 @@ public class SaTokenConfiguration implements WebMvcConfigurer {
         return new StpLogicJwtForSimple();
     }
 
-    @Bean
-    @Primary
-    public SaTokenConfig initSaTokenConfiguration() {
-        SaTokenConfig saTokenConfig = new SaTokenConfig();
-        saTokenConfig.setTokenName("neko-share-token");
-        saTokenConfig.setTimeout(60 * 60 * 24 * 30);
-        saTokenConfig.setActiveTimeout(-1);
-        saTokenConfig.setIsConcurrent(true);
-        saTokenConfig.setIsShare(false);
-        saTokenConfig.setTokenStyle("uuid");
-        saTokenConfig.setTokenPrefix("Bearer");
-        saTokenConfig.setJwtSecretKey("NekoShare");
-        return saTokenConfig;
+    @Autowired
+    public void initSaTokenConfiguration(SaTokenConfig saTokenConfig ) {
+        String encJwtKey = saTokenConfig.getJwtSecretKey();
+        if (Objects.isNull(encJwtKey)) {
+            throw new RuntimeException("Please set sa-token.jwt-secret-key");
+        }
     }
 
     @PostConstruct
     private void initJwtConfiguration() {
         SaJwtUtil.setSaJwtTemplate(new SaJwtTemplate() {
             @Override
-            public String generateToken(JWT jwt, String keyt) {
-                return super.generateToken(jwt, keyt);
+            public String generateToken(JWT jwt, String key) {
+                return super.generateToken(jwt, key);
             }
         });
     }
