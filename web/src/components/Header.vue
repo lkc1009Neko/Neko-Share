@@ -2,19 +2,35 @@
 import { ref, computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useAuthStore } from '../store/auth'
-import { NLayoutHeader, NSpace, NButton, NAvatar, NBadge, NDropdown, useMessage } from 'naive-ui'
-import { PersonOutline, NotificationsOutline, CreateOutline, HomeOutline, AppsOutline, ShareSocialOutline, BookOutline, ExtensionPuzzleOutline, GameControllerOutline, MusicalNotesOutline } from '@vicons/ionicons5'
+import { useThemeStore } from '../store/theme'
+import { NLayoutHeader, NSpace, NButton, NAvatar, NBadge, NDropdown, NTooltip, useMessage } from 'naive-ui'
+import { PersonOutline, NotificationsOutline, CreateOutline, HomeOutline, AppsOutline, ShareSocialOutline, BookOutline, ExtensionPuzzleOutline, GameControllerOutline, MusicalNotesOutline, SunnyOutline, MoonOutline } from '@vicons/ionicons5'
 
 const showMobileMenu = ref(false)
 
 const router = useRouter()
 const route = useRoute()
 const authStore = useAuthStore()
+const themeStore = useThemeStore()
 const message = useMessage()
 
 const isAuthenticated = computed(() => authStore.isAuthenticated)
 const currentUser = computed(() => authStore.user)
 const unreadNotifications = computed(() => 3) // 模拟未读通知数量
+
+// 获取当前主题图标
+const themeIcon = computed(() => {
+  return themeStore.isDark ? SunnyOutline : MoonOutline
+})
+
+// 获取主题提示文本
+const themeTooltip = computed(() => {
+  return themeStore.isDark ? '切换到浅色模式' : '切换到暗色模式'
+})
+
+function toggleTheme() {
+  themeStore.toggleTheme()
+}
 
 const userDropdownOptions = [
   {
@@ -209,6 +225,18 @@ const isActiveRoute = (path: string) => {
 
       <!-- 桌面端操作区 -->
       <n-space align="center" class="desktop-actions">
+        <!-- 主题切换按钮 -->
+        <n-tooltip placement="bottom">
+          <template #trigger>
+            <n-button text @click="toggleTheme" class="theme-toggle">
+              <template #icon>
+                <n-icon :component="themeIcon" />
+              </template>
+            </n-button>
+          </template>
+          {{ themeTooltip }}
+        </n-tooltip>
+
         <!-- 通知按钮 -->
         <n-badge :value="unreadNotifications" :max="99" v-if="isAuthenticated">
           <n-button text @click="goToNotifications" class="action-button">
@@ -276,6 +304,14 @@ const isActiveRoute = (path: string) => {
     <!-- 移动端菜单 -->
     <div v-if="showMobileMenu" class="mobile-menu">
       <div class="mobile-menu-content">
+        <!-- 主题切换按钮 -->
+        <n-button text @click="toggleTheme" class="mobile-theme-button" block>
+          <template #icon>
+            <n-icon :component="themeIcon" />
+          </template>
+          {{ themeTooltip }}
+        </n-button>
+
         <!-- 移动端导航菜单 -->
         <div class="mobile-nav">
           <n-button 
@@ -513,6 +549,25 @@ const isActiveRoute = (path: string) => {
 
 .action-text {
   margin-left: 4px;
+}
+
+.theme-toggle {
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-theme-button {
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.mobile-theme-button:deep(.n-button__content) {
+  gap: 8px;
+  justify-content: flex-start;
 }
 
 .mobile-menu-button {

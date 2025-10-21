@@ -143,10 +143,10 @@ function submitComment() {
           <n-space justify="space-between" align="center">
             <n-space align="center">
               <n-avatar round size="small" />
-              <n-text style="color: #18a058; cursor: pointer;" @click="$router.push(`/profile/${article.author.username}`)">
+              <n-text style="cursor: pointer;" @click="$router.push(`/profile/${article.author.username}`)">
                 @{{ article.author.username }}
               </n-text>
-              <n-text style="color: #999; font-size: 14px;">
+              <n-text style="font-size: 14px;">
                 {{ new Date(article.createdAt).toLocaleDateString() }}
               </n-text>
             </n-space>
@@ -200,11 +200,11 @@ function submitComment() {
             <n-space align="center" style="margin-bottom: 8px;">
               <n-avatar round size="small" />
               <n-text strong>@{{ comment.author.username }}</n-text>
-              <n-text style="color: #999; font-size: 12px;">
+              <n-text style="font-size: 12px;">
                 {{ new Date(comment.createdAt).toLocaleString() }}
               </n-text>
             </n-space>
-            <p style="margin: 0; color: #333;">{{ comment.content }}</p>
+            <p style="margin: 0;">{{ comment.content }}</p>
           </div>
         </div>
       </n-card>
