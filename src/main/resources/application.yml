@@ -44,3 +44,9 @@ waifu2x:
   # 模型文件目录路径（相对于可执行文件或绝对路径）
   model:
     path: models
+ffmpeg:
+  executable:
+    path: D:\\ffmpeg\\bin\\ffmpeg.exe
+probe:
+  executable:
+    path: D:\\ffmpeg\\bin\\probe.exe

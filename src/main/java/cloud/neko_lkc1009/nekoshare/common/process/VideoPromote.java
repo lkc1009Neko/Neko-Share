@@ -13,7 +13,6 @@ import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.text.DecimalFormat;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,12 +27,11 @@ import java.util.List;
 @Slf4j
 @Component
 public class VideoPromote {
-
     @Value("${ffmpeg.executable.path:ffmpeg}")
     private String ffmpegPath;
 
-    @Value("${ffprobe.executable.path:ffprobe}")
-    private String ffprobePath;
+    @Value("${probe.executable.path}")
+    private String probePath;
 
     @Value("${waifu2x.executable.path:waifu2x-ncnn-vulkan}")
     private String waifu2xPath;
@@ -201,9 +199,9 @@ public class VideoPromote {
     }
 
     private Integer detectFps(String inputPath) throws IOException {
-        // 使用 ffprobe 获取帧率 (r_frame_rate)
+        // 使用 probe 获取帧率 (r_frame_rate)
         List<String> cmd = new ArrayList<>();
-        cmd.add(ffprobePath);
+        cmd.add(probePath);
         cmd.add("-v");
         cmd.add("0");
         cmd.add("-of");

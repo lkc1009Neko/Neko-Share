@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class VideoPromoteTest {
-
     @Test
     void testAvailabilityChecks() {
         VideoPromote vp = new VideoPromote();

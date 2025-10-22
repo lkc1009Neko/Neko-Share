@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class VideoCompressTest {
-
     @Test
     void testFfmpegAvailability() {
         VideoCompress vc = new VideoCompress();

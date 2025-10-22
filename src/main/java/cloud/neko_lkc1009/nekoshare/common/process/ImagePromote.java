@@ -24,7 +24,6 @@ import java.util.List;
 @Slf4j
 @Component
 public class ImagePromote {
-
     @Value("${waifu2x.executable.path:waifu2x-ncnn-vulkan}")
     private String waifu2xExecutablePath;
 

@@ -23,8 +23,7 @@ import java.util.List;
 @Slf4j
 @Component
 public class VideoCompress {
-
-    @Value("${ffmpeg.executable.path:ffmpeg}")
+    @Value("${ffmpeg.executable.path}")
     private String ffmpegPath;
 
     /**
