@@ -28,4 +28,5 @@ public class VideoCompressTest {
         boolean result = vc.compress("Z:/path/not_exists.mp4", System.getProperty("java.io.tmpdir") + "/out.mp4", cfg);
         Assertions.assertFalse(result);
     }
+
 }

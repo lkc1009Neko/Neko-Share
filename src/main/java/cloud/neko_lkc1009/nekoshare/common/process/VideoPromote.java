@@ -301,4 +301,5 @@ public class VideoPromote {
             return false;
         }
     }
+
 }

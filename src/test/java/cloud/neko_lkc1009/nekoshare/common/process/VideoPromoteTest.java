@@ -32,4 +32,5 @@ public class VideoPromoteTest {
         boolean result = vp.promote("Z:/path/not_exists.mp4", System.getProperty("java.io.tmpdir") + "/up.mp4", cfg);
         Assertions.assertFalse(result);
     }
+
 }
