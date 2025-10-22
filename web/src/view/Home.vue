@@ -567,7 +567,6 @@ function goToResources() {
 }
 
 .article-excerpt {
-  color: #666;
   margin-bottom: 16px;
   line-height: 1.5;
 }

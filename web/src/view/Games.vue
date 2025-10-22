@@ -556,13 +556,11 @@ onMounted(() => {
   margin: 0;
   font-size: 1.5rem;
   font-weight: 600;
-  color: #1a1a1a;
 }
 
 .steam-id {
   margin: 4px 0;
   font-size: 0.9rem;
-  color: #666;
 }
 
 .status {
@@ -574,7 +572,6 @@ onMounted(() => {
 
 .last-online {
   font-size: 0.85rem;
-  color: #999;
 }
 
 .connect-button {
@@ -616,7 +613,6 @@ onMounted(() => {
 
 .filter-label {
   font-size: 0.9rem;
-  color: #666;
   min-width: 60px;
 }
 
@@ -685,7 +681,6 @@ onMounted(() => {
   margin: 0;
   font-size: 1.1rem;
   font-weight: 600;
-  color: #1a1a1a;
   line-height: 1.3;
 }
 
@@ -701,14 +696,12 @@ onMounted(() => {
   align-items: center;
   gap: 4px;
   font-size: 0.85rem;
-  color: #666;
 }
 
 .game-description {
   margin: 0;
   font-size: 0.9rem;
   line-height: 1.4;
-  color: #555;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -723,11 +716,6 @@ onMounted(() => {
 
 .detail-item {
   font-size: 0.85rem;
-  color: #666;
-}
-
-.detail-item strong {
-  color: #333;
 }
 
 .game-tags {
@@ -746,7 +734,6 @@ onMounted(() => {
 
 .price-original {
   font-size: 0.9rem;
-  color: #999;
   text-decoration: line-through;
 }
 

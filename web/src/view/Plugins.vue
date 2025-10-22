@@ -658,19 +658,16 @@ onMounted(() => {
   margin: 0;
   font-size: 1.1rem;
   font-weight: 600;
-  color: #1a1a1a;
 }
 
 .plugin-version {
   margin: 0;
   font-size: 0.9rem;
-  color: #666;
 }
 
 .plugin-author {
   margin: 4px 0 0 0;
   font-size: 0.9rem;
-  color: #666;
   display: flex;
   align-items: center;
   gap: 4px;
@@ -680,7 +677,6 @@ onMounted(() => {
   margin: 0 0 12px 0;
   font-size: 0.95rem;
   line-height: 1.4;
-  color: #555;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -699,7 +695,6 @@ onMounted(() => {
 
 .upload-date {
   font-size: 0.8rem;
-  color: #999;
 }
 
 .plugin-tags {
@@ -710,7 +705,6 @@ onMounted(() => {
 }
 
 .more-tags {
-  color: #999;
   font-size: 0.9rem;
 }
 
@@ -726,7 +720,6 @@ onMounted(() => {
   align-items: center;
   gap: 6px;
   font-size: 0.85rem;
-  color: #666;
 }
 
 .plugin-actions {
@@ -751,13 +744,11 @@ onMounted(() => {
   margin: 0;
   font-size: 1.5rem;
   font-weight: 600;
-  color: #1a1a1a;
 }
 
 .author {
   margin: 4px 0 0 0;
   font-size: 1rem;
-  color: #666;
   display: flex;
   align-items: center;
   gap: 6px;
@@ -766,7 +757,6 @@ onMounted(() => {
 .description {
   font-size: 1rem;
   line-height: 1.6;
-  color: #555;
   margin-bottom: 20px;
 }
 

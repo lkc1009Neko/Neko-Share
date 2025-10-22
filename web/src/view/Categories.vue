@@ -568,7 +568,6 @@ function clearFilters() {
 }
 
 .article-excerpt {
-  color: #666;
   margin-bottom: 16px;
   line-height: 1.5;
 }
@@ -599,7 +598,6 @@ function clearFilters() {
 }
 
 .article-date {
-  color: #999;
   font-size: 0.9rem;
 }
 
@@ -613,7 +611,6 @@ function clearFilters() {
   display: flex;
   align-items: center;
   gap: 4px;
-  color: #999;
   font-size: 0.9rem;
 }
 

@@ -762,7 +762,6 @@ function goToProfile() {
 }
 
 .resource-description {
-  color: #666;
   margin-bottom: 16px;
   line-height: 1.5;
   display: -webkit-box;
@@ -786,7 +785,6 @@ function goToProfile() {
   display: flex;
   gap: 12px;
   font-size: 0.9rem;
-  color: #999;
 }
 
 .resource-footer {
@@ -816,7 +814,6 @@ function goToProfile() {
   display: flex;
   align-items: center;
   gap: 4px;
-  color: #999;
   font-size: 0.9rem;
 }
 
