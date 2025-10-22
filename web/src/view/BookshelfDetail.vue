@@ -501,7 +501,6 @@ onMounted(() => {
   margin: 0;
   font-size: 1.5rem;
   font-weight: 600;
-  color: #1a1a1a;
 }
 
 .tab-content {
@@ -549,7 +548,6 @@ onMounted(() => {
 
 .book-author {
   margin: 0 0 8px 0;
-  color: #666;
   font-size: 0.9rem;
 }
 
@@ -563,11 +561,9 @@ onMounted(() => {
   padding: 2px 6px;
   border-radius: 4px;
   font-size: 0.8rem;
-  color: #666;
 }
 
 .more-tags {
-  color: #999;
   font-size: 0.8rem;
 }
 
@@ -576,7 +572,6 @@ onMounted(() => {
   justify-content: space-between;
   align-items: center;
   font-size: 0.8rem;
-  color: #999;
 }
 
 .records-list {
@@ -611,7 +606,6 @@ onMounted(() => {
   margin: 0 0 8px 0;
   font-size: 1rem;
   font-weight: 600;
-  color: #1a1a1a;
 }
 
 .record-progress {
@@ -636,7 +630,6 @@ onMounted(() => {
 
 .progress-text {
   font-size: 0.9rem;
-  color: #666;
 }
 
 .record-meta {
@@ -651,7 +644,6 @@ onMounted(() => {
   align-items: center;
   gap: 4px;
   font-size: 0.8rem;
-  color: #999;
 }
 
 /* 移动端适配 */

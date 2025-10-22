@@ -621,13 +621,11 @@ onMounted(() => {
   margin: 0 0 8px 0;
   font-size: 1.4rem;
   font-weight: 600;
-  color: #1a1a1a;
   line-height: 1.3;
 }
 
 .book-author {
   margin: 0 0 16px 0;
-  color: #666;
   font-size: 1rem;
 }
 
@@ -686,12 +684,10 @@ onMounted(() => {
   margin: 0 0 8px 0;
   font-size: 1.1rem;
   font-weight: 600;
-  color: #1a1a1a;
 }
 
 .author-bio {
   margin: 0;
-  color: #666;
   line-height: 1.5;
 }
 
@@ -709,7 +705,6 @@ onMounted(() => {
 
 .book-description {
   margin: 0;
-  color: #333;
   line-height: 1.6;
   font-size: 1rem;
 }
@@ -718,7 +713,6 @@ onMounted(() => {
   margin: 0 0 16px 0;
   font-size: 1.1rem;
   font-weight: 600;
-  color: #1a1a1a;
 }
 
 .info-grid {
@@ -736,12 +730,10 @@ onMounted(() => {
 .info-label {
   min-width: 80px;
   font-weight: 500;
-  color: #666;
 }
 
 .info-value {
   flex: 1;
-  color: #333;
 }
 
 /* 合集信息 */
@@ -753,7 +745,6 @@ onMounted(() => {
 
 .collection-description {
   margin: 0;
-  color: #666;
   line-height: 1.5;
 }
 
@@ -769,13 +760,8 @@ onMounted(() => {
   align-items: center;
 }
 
-.stat-label {
-  color: #666;
-}
-
 .stat-value {
   font-weight: 500;
-  color: #333;
 }
 
 /* 书籍列表 */
@@ -815,7 +801,6 @@ onMounted(() => {
 }
 
 .book-list-description, .related-description {
-  color: #666;
   margin-bottom: 12px;
   line-height: 1.4;
   display: -webkit-box;
@@ -840,7 +825,6 @@ onMounted(() => {
   justify-content: space-between;
   align-items: center;
   font-size: 0.9rem;
-  color: #999;
 }
 
 .book-list-actions {

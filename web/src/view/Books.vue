@@ -874,7 +874,6 @@ onMounted(() => {
   margin: 0;
   font-size: 1rem;
   font-weight: 600;
-  color: #1a1a1a;
 }
 
 .section-count {
@@ -1002,7 +1001,6 @@ onMounted(() => {
   margin: 0 0 16px 0;
   font-size: 1.5rem;
   font-weight: 600;
-  color: #1a1a1a;
 }
 
 .search-controls {
