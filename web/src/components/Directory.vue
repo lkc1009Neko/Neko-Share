@@ -39,6 +39,8 @@ watch(() => props.target, (newVal) => {
 
     headings?.forEach((item: HTMLHeadingElement) => {
 
+        item.id = `heading-${index}`;
+
         const level = Number(item.tagName.substring(1))
 
         const currentObj: DirectoryItem = {

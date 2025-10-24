@@ -16,7 +16,30 @@ const articleRef = ref<HTMLElement | null>(null)
 const comments = ref<any[]>([])
 const newComment = ref('')
 
+const isMobile = ref(false)
+let isMobileTimer: number = 0
+
+function detectMobile() {
+  window.screen.width <= 768 ? isMobile.value = true : isMobile.value = false
+}
+
+function onResize() {
+  if (isMobileTimer) {
+    clearTimeout(isMobileTimer)
+  }
+  isMobileTimer = setTimeout(() => {
+    detectMobile()
+  }, 200)
+}
+
 onMounted(() => {
+
+  detectMobile()
+
+  window.addEventListener('resize', () => {
+    onResize()
+  })
+
   // 模拟文章数据
   article.value = {
     id: articleId,
@@ -35,79 +58,79 @@ onMounted(() => {
     //   <p>合理使用 onMounted、onUnmounted 等生命周期钩子。</p>
     // `,
     content: `
-      <h1 id="heading-0">Vue 3 组合式 API 最佳实践</h1>
+      <h1>Vue 3 组合式 API 最佳实践</h1>
       <p>Vue 3 的组合式 API 提供了更好的代码组织和复用性，本文将介绍一些最佳实践。</p>
 
-      <h2 id="heading-1">1. 使用 ref 和 reactive</h2>
+      <h2>1. 使用 ref 和 reactive</h2>
       <p>在组合式 API 中，推荐使用 ref 和 reactive 来管理响应式状态。</p>
 
-      <h3 id="heading-2">1.1 ref 的使用场景</h3>
+      <h3>1.1 ref 的使用场景</h3>
       <p>当需要对基础类型数据进行响应式管理时，使用 ref 最为合适。</p>
 
-      <h3 id="heading-3">1.2 reactive 的使用场景</h3>
+      <h3>1.2 reactive 的使用场景</h3>
       <p>当需要对对象或数组进行响应式管理时，使用 reactive 更加方便。</p>
 
-      <h2 id="heading-4">2. 组合式函数的封装</h2>
+      <h2>2. 组合式函数的封装</h2>
       <p>将相关的逻辑封装成组合式函数，提高代码的可复用性。</p>
 
-      <h3 id="heading-5">2.1 封装通用逻辑</h3>
+      <h3>2.1 封装通用逻辑</h3>
       <p>可以将重复使用的状态管理或方法封装为组合函数，方便在多个组件中调用。</p>
 
-      <h3 id="heading-6">2.2 封装业务逻辑</h3>
+      <h3>2.2 封装业务逻辑</h3>
       <p>针对特定业务需求，将逻辑拆分为组合函数，提高可读性和维护性。</p>
 
-      <h4 id="heading-7">2.2.1 API 请求封装</h4>
+      <h4>2.2.1 API 请求封装</h4>
       <p>将请求接口的逻辑封装到组合函数中，并返回响应数据和状态。</p>
 
-      <h4 id="heading-8">2.2.2 表单处理封装</h4>
+      <h4>2.2.2 表单处理封装</h4>
       <p>封装表单校验和提交逻辑，使组件更简洁。</p>
 
-      <h2 id="heading-9">3. 生命周期钩子的使用</h2>
+      <h2>3. 生命周期钩子的使用</h2>
       <p>合理使用 onMounted、onUnmounted 等生命周期钩子。</p>
 
-      <h3 id="heading-10">3.1 onMounted 的应用</h3>
+      <h3>3.1 onMounted 的应用</h3>
       <p>在组件挂载完成后执行初始化逻辑，例如数据请求或 DOM 操作。</p>
 
-      <h3 id="heading-11">3.2 onUnmounted 的应用</h3>
+      <h3>3.2 onUnmounted 的应用</h3>
       <p>在组件销毁前清理定时器、事件监听或外部资源。</p>
 
-      <h2 id="heading-12">4. 计算属性与侦听器</h2>
+      <h2>4. 计算属性与侦听器</h2>
       <p>计算属性和 watch 可以帮助管理复杂状态和副作用。</p>
 
-      <h3 id="heading-13">4.1 computed 的使用</h3>
+      <h3>4.1 computed 的使用</h3>
       <p>当需要基于响应式数据计算派生状态时，使用 computed 可以保证高效缓存。</p>
 
-      <h3 id="heading-14">4.2 watch 的使用</h3>
+      <h3>4.2 watch 的使用</h3>
       <p>当需要响应特定状态变化执行副作用时，使用 watch 更加灵活。</p>
 
-      <h2 id="heading-15">5. 模板语法与渲染逻辑</h2>
+      <h2>5. 模板语法与渲染逻辑</h2>
       <p>模板语法和组合式 API 搭配，可以保持代码清晰简洁。</p>
 
-      <h3 id="heading-16">5.1 条件渲染</h3>
+      <h3>5.1 条件渲染</h3>
       <p>使用 v-if、v-else 或 v-show 控制模板元素的显示。</p>
 
-      <h3 id="heading-17">5.2 列表渲染</h3>
+      <h3>5.2 列表渲染</h3>
       <p>使用 v-for 渲染列表，并结合 key 提升性能和稳定性。</p>
 
-      <h2 id="heading-18">6. 响应式工具函数</h2>
+      <h2>6. 响应式工具函数</h2>
       <p>Vue 3 提供了多个工具函数，如 toRefs、toRaw、shallowRef 等。</p>
 
-      <h3 id="heading-19">6.1 toRefs 的使用</h3>
+      <h3>6.1 toRefs 的使用</h3>
       <p>将 reactive 对象的属性转换为 ref，方便解构和传递。</p>
 
-      <h3 id="heading-20">6.2 toRaw 的使用</h3>
+      <h3>6.2 toRaw 的使用</h3>
       <p>获取 reactive 对象的原始数据，用于非响应式处理或调试。</p>
 
-      <h3 id="heading-21">6.3 shallowRef 的使用</h3>
+      <h3>6.3 shallowRef 的使用</h3>
       <p>只对对象的第一层做响应式，提高性能。</p>
 
-      <h2 id="heading-22">7. 组合式 API 性能优化</h2>
+      <h2>7. 组合式 API 性能优化</h2>
       <p>在大型项目中，需要注意组合式 API 的性能优化策略。</p>
 
-      <h3 id="heading-23">7.1 避免不必要的响应式</h3>
+      <h3>7.1 避免不必要的响应式</h3>
       <p>使用非响应式变量或 shallowRef，减少性能开销。</p>
 
-      <h3 id="heading-24">7.2 组件拆分</h3>
+      <h3>7.2 组件拆分</h3>
       <p>将复杂组件拆分为小组件，提高渲染效率和可维护性。</p>
     `,
     excerpt: 'Vue 3 的组合式 API 提供了更好的代码组织和复用性，本文将介绍一些最佳实践。',
@@ -237,13 +260,21 @@ function submitComment() {
         </template>
 
         <n-grid cols="12">
-          <n-gi :span="9">
-            <div ref="articleRef" v-html="article.content" class="article-content"></div>
-          </n-gi>
-          <n-gi :span="3">
-            <!-- 目录组件占位符1 -->
-            <Directory :target="articleRef" />
-          </n-gi>
+          <template v-if="!isMobile">
+            <n-gi :span="9">
+              <div ref="articleRef" v-html="article.content" class="article-content"></div>
+            </n-gi>
+            <n-gi :span="3">
+              <!-- 目录组件占位符1 -->
+              <Directory :target="articleRef" />
+            </n-gi>
+          </template>
+          <template v-else>
+            <n-gi :span="12">
+              <Directory :target="articleRef" />
+              <div ref="articleRef" v-html="article.content" class="article-content" style="margin-top: 20px;"></div>
+            </n-gi>
+          </template>
         </n-grid>
 
         <template #action>
