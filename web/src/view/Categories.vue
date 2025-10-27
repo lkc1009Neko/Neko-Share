@@ -13,6 +13,16 @@ const selectedTag = ref('')
 const router = useRouter()
 const authStore = useAuthStore()
 
+const sortOptions = [
+  { label: '默认排序', key: 0 },
+  { label: '时间降序', key: 1 },
+  { label: '时间升序', key: 2 },
+  { label: '热度降序', key: 3 },
+  { label: '点赞数降序', key: 4 }
+]
+const selectedSort = ref(0)
+const sortLabel = ref('默认排序')
+
 // 模拟用户数据
 const currentUser: User = {
   id: '1',
@@ -116,27 +126,55 @@ const mockArticles: Article[] = [
   }
 ]
 
+const articleSort = (a: Article, b: Article, option: number): number => {
+  const dateA = new Date(a.createdAt).getTime()
+  const dateB = new Date(b.createdAt).getTime()
+  if (option === 1) {
+    return dateB - dateA // 时间降序
+  } else if (option === 2) {
+    return dateA - dateB // 时间升序
+  } else if (option === 3) {
+    if (b.views !== a.views) {
+      return b.views - a.views // 热度降序
+    }
+    return 0
+  } else if (option === 4) {
+    if (b.likes !== a.likes) {
+      return b.likes - a.likes // 点赞数降序
+    }
+    return 0
+  }
+  return 0
+}
+
 // 计算属性
 const filteredArticles = computed(() => {
   let filtered = articles.value
-  
+
   // 根据搜索关键词过滤
   if (searchQuery.value) {
     const query = searchQuery.value.toLowerCase()
-    filtered = filtered.filter(article => 
+    filtered = filtered.filter(article =>
       article.title.toLowerCase().includes(query) ||
       article.excerpt.toLowerCase().includes(query) ||
       article.tags.some(tag => tag.toLowerCase().includes(query))
     )
   }
-  
+
   // 根据标签过滤
   if (selectedTag.value) {
-    filtered = filtered.filter(article => 
+    filtered = filtered.filter(article =>
       article.tags.includes(selectedTag.value)
     )
   }
-  
+
+  // 文章排序：时间升降序，热度降序，点赞数降序
+  if (selectedSort.value) {
+    filtered = filtered.slice().sort((a, b) => {
+      return articleSort(a, b, selectedSort.value)
+    })
+  }
+
   return filtered
 })
 
@@ -187,12 +225,17 @@ function clearFilters() {
   searchQuery.value = ''
   selectedTag.value = ''
 }
+
+function handleSort(option: number) {
+  selectedSort.value = option
+  sortLabel.value = sortOptions.find(o => o.key === option)?.label || '默认排序'
+} 
 </script>
 
 <template>
   <n-layout>
     <Header />
-    
+
     <n-layout-content class="categories-content">
       <div class="categories-container">
         <!-- 左侧个人信息卡片 -->
@@ -209,9 +252,9 @@ function clearFilters() {
                 <p class="user-bio">{{ currentUser.bio }}</p>
               </div>
             </div>
-            
+
             <n-divider />
-            
+
             <div class="user-stats">
               <n-statistic label="文章" :value="articles.filter(a => a.author.id === currentUser.id).length">
                 <template #prefix>
@@ -229,7 +272,7 @@ function clearFilters() {
                 </template>
               </n-statistic>
             </div>
-            
+
             <n-button type="primary" block @click="goToProfile" class="profile-button">
               查看个人主页
             </n-button>
@@ -241,13 +284,8 @@ function clearFilters() {
           <div class="content-header">
             <h2 class="section-title">文章分类</h2>
             <div class="search-controls">
-              <n-input
-                v-model:value="searchQuery"
-                placeholder="搜索文章标题、内容或标签..."
-                class="search-input"
-                size="large"
-                clearable
-              >
+              <n-input v-model:value="searchQuery" placeholder="搜索文章标题、内容或标签..." class="search-input" size="large"
+                clearable>
                 <template #prefix>
                   <n-icon :component="SearchOutline" />
                 </template>
@@ -262,14 +300,8 @@ function clearFilters() {
           <div class="tags-section">
             <h3 class="tags-title">热门标签</h3>
             <div class="tags-container">
-              <n-tag
-                v-for="tag in allTags"
-                :key="tag"
-                :type="selectedTag === tag ? 'primary' : 'default'"
-                size="large"
-                @click="selectTag(tag)"
-                class="tag-item"
-              >
+              <n-tag v-for="tag in allTags" :key="tag" :type="selectedTag === tag ? 'primary' : 'default'" size="large"
+                @click="selectTag(tag)" class="tag-item">
                 {{ tag }} ({{ tagCounts[tag] }})
               </n-tag>
             </div>
@@ -282,13 +314,19 @@ function clearFilters() {
             <span v-if="searchQuery" class="search-query">搜索关键词: "{{ searchQuery }}"</span>
           </div>
 
+          <!-- 排序 -->
+          <div class="sort-section">
+            <h3 class="sort-title">排序方式</h3>
+            <n-dropdown :options="sortOptions" @select="handleSort">
+              <n-button>
+                {{ sortLabel }}
+              </n-button>
+            </n-dropdown>
+          </div>
+
           <!-- 文章列表 -->
           <div class="articles-grid">
-            <n-card 
-              v-for="article in filteredArticles" 
-              :key="article.id" 
-              class="article-card"
-            >
+            <n-card v-for="article in filteredArticles" :key="article.id" class="article-card">
               <template #header>
                 <div class="article-header">
                   <h3 class="article-title" @click="$router.push(`/article/${article.id}`)">
@@ -322,13 +360,7 @@ function clearFilters() {
                     <span class="stat-count">{{ article.views }}</span>
                   </div>
                   <div class="article-tags">
-                    <n-tag 
-                      v-for="tag in article.tags" 
-                      :key="tag" 
-                      size="small" 
-                      type="primary"
-                      @click="selectTag(tag)"
-                    >
+                    <n-tag v-for="tag in article.tags" :key="tag" size="small" type="primary" @click="selectTag(tag)">
                       {{ tag }}
                     </n-tag>
                   </div>
@@ -484,6 +516,17 @@ function clearFilters() {
 
 .tag-item:hover {
   transform: translateY(-1px);
+}
+
+/* 排序区域 */
+.sort-section {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.sort-title {
+  margin: 0 16px 0 0;
 }
 
 /* 结果信息 */
